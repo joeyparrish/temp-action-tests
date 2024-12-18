@@ -1,0 +1,26 @@
+name: PR
+
+on:
+  pull_request: # Trigger for pull requests.
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch: # Allows for manual triggering.
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    #permissions:
+    #  contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - run: |
+          ./test.sh
+
+      - name: Debug
+        uses: mxschmitt/action-tmate@v3.17
+        with:
+          limit-access-to-actor: true
