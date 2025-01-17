@@ -1,7 +1,7 @@
 name: PR
 
 on:
-  pull_request_target: # Trigger for pull requests.
+  pull_request: # Trigger for pull requests.
     types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch: # Allows for manual triggering.
 
